@@ -10,5 +10,6 @@
 ## (미완성) 프로그램 사용 예시
 (수정)
 
-## 참고 문헌
-(수정)
+## 참고한 글
+https://stackoverflow.com/questions/2048509/how-to-echo-with-different-colors-in-the-windows-command-line
+https://solarianprogrammer.com/2019/04/08/c-programming-ansi-escape-codes-windows-macos-linux-terminals/
