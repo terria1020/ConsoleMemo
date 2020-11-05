@@ -7,8 +7,7 @@
 
 
 Memo::Memo(const string name)
-	: name(name),
-	tagindex(0)
+	: name(name)
 {
 }
 

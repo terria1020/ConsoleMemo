@@ -9,8 +9,6 @@ struct Memo {
 	string name;
 	vector<string> tag;
 
-	int tagindex;
-
 	Memo(const string name);
 	~Memo();
 };
