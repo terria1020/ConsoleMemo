@@ -1,6 +1,12 @@
-#include "header\MemoHandler.h"
+#ifdef _WIN32
+    #include "header\MemoHandler.h"
+#elif __linux__
+    #include "header/MemoHandler.h"
+#endif
+
 #include <iostream>
 #include <algorithm>
+
 
 MemoHandler::MemoHandler()
 	: theme(0)
