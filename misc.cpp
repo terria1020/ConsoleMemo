@@ -10,17 +10,19 @@
 using std::cout;
 using std::cin;
 
+#ifdef _WIN32
+    #define CLEARCON() system("cls")
+#elif __linux__
+    #define CLEARCON() system("clear")
+#endif
+
 void setup () {
     #ifdef _WIN32
         system("@echo off");
         //system("chcp 65001");//using korean in console // 원하는 대로 한글이 안 나옴. 일단 나중에 고쳐야 할 듯.
         system("chcp 949");
-        system("cls");
     #endif
-
-    #ifdef __linux__
-        system("clear");
-    #endif
+    CLEARCON();
     return;
 }
 
@@ -35,6 +37,6 @@ const int getIndex(const string coutText) {
 		cin.ignore(IGNORESIZE, '\n');
         return -1;
 	}
-    cin.ignore(1, '\n');
+    cin.ignore(1, '\n');//buffer flush
     return index - 1;
 }

@@ -4,8 +4,6 @@
     #include "header/Memo.h"
 #endif
 
-
-
 Memo::Memo(const string name)
 	: name(name)
 {

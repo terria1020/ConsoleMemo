@@ -9,9 +9,6 @@
 #include <iostream>
 #include <algorithm>
 
-
-
-
 MemoHandler::MemoHandler()
 	: theme(0)
 {
