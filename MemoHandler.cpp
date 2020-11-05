@@ -1,21 +1,23 @@
 #ifdef _WIN32
     #include "header\MemoHandler.h"
+	#include "header\misc.h"
 #elif __linux__
     #include "header/MemoHandler.h"
+	#include "header/misc.h"
 #endif
 
 #include <iostream>
 #include <algorithm>
 
 
+
+
 MemoHandler::MemoHandler()
 	: theme(0)
 {
-
 }
 
 MemoHandler::~MemoHandler() {
-
 }
 
 
@@ -30,13 +32,7 @@ void MemoHandler::newMemo() {
 }
 void MemoHandler::newMemoTag() {
 	string tag;
-	int index;
-	cout << "[new] select Memo index : ";
-	cin >> index;
-	cin.clear();
-	cin.ignore(1, '\n');
-
-	index = index - 1;
+	int index = getIndex("[new] select Memo index : ");
 
 	if (index < 0 || index > memos.size()) {
 		cout << "[!] invalid index." << endl;
@@ -45,21 +41,10 @@ void MemoHandler::newMemoTag() {
 	cout << "tag : ";
 	getline(cin, tag);
 
-
-	//cout << "tag : " << tag << endl;
-
-//	memos[index].tag[memos[index].tagindex++] = tag;
-
 	memos[index].tag.push_back(tag);
 }
 void MemoHandler::rmMemo() {
-	int index;
-	cout << "[remove] select Memo index : ";
-	cin >> index;
-	cin.clear();
-	cin.ignore(1, '\n');
-
-	index = index - 1;
+	int index = getIndex("[remove] select Memo index : ");
 
 	if (index < 0 || index > memos.size()) {
 		cout << "[!] invalid index." << endl;
@@ -70,7 +55,22 @@ void MemoHandler::rmMemo() {
 	cout << "remove success." << endl;
 }
 void MemoHandler::rmTag() {
+	int tindex;
+	int index = getIndex("[remove] select Memo index : ");
 
+	if (index < 0 || index > memos.size()) {
+		cout << "[!] invalid index." << endl;
+		return;
+	}
+
+	tindex = getIndex("[remove] select Tag index : ");
+	if (tindex < 0 || tindex > memos[index].tag.size()) {
+		cout << "[!] invalid index." << endl;
+		return;
+	}
+
+	memos[index].tag.erase(memos[index].tag.begin() + tindex);
+	cout << "remove success." << endl;
 }
 
 void MemoHandler::showMemo(const int index) {

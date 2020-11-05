@@ -5,6 +5,10 @@
 #endif
 
 #include <cstdlib>
+#include <iostream>
+#include <assert.h>
+using std::cout;
+using std::cin;
 
 void setup () {
     #ifdef _WIN32
@@ -18,4 +22,19 @@ void setup () {
         system("clear");
     #endif
     return;
+}
+
+const int getIndex(const string coutText) {
+    assert(coutText.size());
+
+    int index;
+	cout << coutText;
+	cin >> index;
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore(IGNORESIZE, '\n');
+        return -1;
+	}
+    cin.ignore(1, '\n');
+    return index - 1;
 }

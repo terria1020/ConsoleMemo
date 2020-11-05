@@ -26,6 +26,7 @@ int main(int argc, char const *argv[])
 	handler.showMemo(1);
 	
 	handler.rmMemo();
+	handler.rmTag();
 
 	handler.showAllMemo();
 	
