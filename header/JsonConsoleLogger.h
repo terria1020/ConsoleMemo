@@ -7,4 +7,6 @@ public:
     JsonConsoleLogger(Json & json);
     ~JsonConsoleLogger();
     void log() override;
+
+    int level;
 };
