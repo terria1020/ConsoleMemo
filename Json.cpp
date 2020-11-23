@@ -2,8 +2,6 @@
 #include "header/JsonValue.h"
 #include <algorithm>
 #include <iostream>
-#include <sstream>
-#include <fstream>
 using namespace std;
 
 
@@ -13,18 +11,7 @@ Json::~Json() {
 }
 
 string Json::str() {
-    ostringstream oss;
-    oss << "{" << endl;
-    if (key != "") oss << "\"" + key + "\": ";
-    int temp = 0;
-    int size = data.size();
-    for_each(data.begin(), data.end(), [&oss, &temp, size] (shared_ptr<JsonData> jsondata) {
-        //oss << data->str() << endl;
-        if (jsondata->Type() == TYPE::VALUE) oss << jsondata->str() << endl;
-        else oss << jsondata->str();
-    });
-    oss << "}" << endl;
-    return oss.str();
+    return "\"" + key + "\": ";
 }
 type_t Json::Type() {
     static type_t type = TYPE::JSONOBJ;
@@ -44,7 +31,7 @@ Json & Json::addJson(Json & json) {
     return *this;
 }
 
-JsonData & Json::operator[] (const int index) const throw(int) {
-    if (index < 1 || index >= data.size()) throw(-1);
+JsonData & Json::operator[] (const int index) const {
+    //if (index < 0 || index >= data.size()) throw("invalid index.")
     return *data[index];
 }

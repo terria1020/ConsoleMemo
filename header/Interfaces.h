@@ -25,6 +25,15 @@ namespace MANAGERINTERFACES {
     struct IJsonPrintManager {
         virtual void print() = 0;
     };
+    struct IJsonMaker {
+        virtual void makefile() = 0;
+    };
+    struct IJsonConsoleLogger {
+        virtual void log() = 0;
+    };
+    struct IJsonParser {
+        virtual bool parse() = 0;
+    };
 }
 using namespace JSONINTERFACES;
 using namespace MANAGERINTERFACES;

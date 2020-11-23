@@ -1,6 +1,8 @@
 #include <iostream>
 #include "header/Json.h"
 #include "header/JsonValue.h"
+#include "header/JsonConsoleLogger.h"
+#include "header/JsonMaker.h"
 
 using namespace std;
 
@@ -18,12 +20,7 @@ int main() {
     root.addJson(sub);
     
     cout << root.str() << endl;
-    try {
-        cout << root[2].str() << endl;    
-    }
-    catch (int e) {
-        cerr << "invalid index." << endl;
-    }
+    cout << root[1].str() << endl;
     
     return 0;
 }

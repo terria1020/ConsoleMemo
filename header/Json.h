@@ -18,7 +18,12 @@ public:
     Json & addValue(const string value);
     Json & addJson(Json & json);
 
-    JsonData & operator[] (const int index) const throw(int);
+    JsonData & operator[] (const int index) const;
+
+    friend class JsonManager;
+    friend class JsonConsoleLogger;
+    friend class JsonMaker;
+    friend class JsonParser;
 private:
     string key;
     vector<shared_ptr<JsonData>> data;
