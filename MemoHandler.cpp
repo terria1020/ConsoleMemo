@@ -29,6 +29,13 @@ void MemoHandler::newMemo() {
 }
 void MemoHandler::newMemoTag() {
 	string tag;
+	cout << "available memo index : [ ";
+	int i = 1;
+	for_each(memos.begin(), memos.end(), [&i] (Memo & memo) {
+		cout << i << " ";
+		i++;
+	});
+	cout << "]" << endl;
 	int index = getIndex("[new] select Memo index : ");
 
 	if (index < 0 || index > memos.size()) {
