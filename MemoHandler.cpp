@@ -1,13 +1,16 @@
 #ifdef _WIN32
     #include "header\MemoHandler.h"
 	#include "header\misc.h"
+	#include "header\ColorString.h"
 #elif __linux__
     #include "header/MemoHandler.h"
-	#include "header/misc.h"
+	#include "header/Misc.h"
+	#include "header/ColorString.h"
 #endif
 
 #include <iostream>
 #include <algorithm>
+#include <sstream>
 
 MemoHandler::MemoHandler()
 	: theme(0)
@@ -29,17 +32,11 @@ void MemoHandler::newMemo() {
 }
 void MemoHandler::newMemoTag() {
 	string tag;
-	cout << "available memo index : [ ";
-	int i = 1;
-	for_each(memos.begin(), memos.end(), [&i] (Memo & memo) {
-		cout << i << " ";
-		i++;
-	});
-	cout << "]" << endl;
+	cout << getAvailableMemoIndex();
 	int index = getIndex("[new] select Memo index : ");
 
 	if (index < 0 || index > memos.size()) {
-		cout << "[!] invalid index." << endl;
+		cout << COLOR("[!] invalid index.", ERROR) << endl;
 		return;
 	}
 	cout << "tag : ";
@@ -48,10 +45,11 @@ void MemoHandler::newMemoTag() {
 	memos[index].tag.push_back(tag);
 }
 void MemoHandler::rmMemo() {
+	cout << getAvailableMemoIndex();
 	int index = getIndex("[remove] select Memo index : ");
 
-	if (index < 0 || index > memos.size()) {
-		cout << "[!] invalid index." << endl;
+	if (index < 0 || index >= memos.size()) {
+		cout << COLOR("[!] invalid index.", ERROR) << endl;
 		return;
 	}
 
@@ -59,17 +57,19 @@ void MemoHandler::rmMemo() {
 	cout << "remove success." << endl;
 }
 void MemoHandler::rmTag() {
+
+	cout << getAvailableMemoIndex();
 	int tindex;
 	int index = getIndex("[remove] select Memo index : ");
 
-	if (index < 0 || index > memos.size()) {
-		cout << "[!] invalid index." << endl;
+	if (index < 0 || index >= memos.size()) {
+		cout << COLOR("[!] invalid index.", ERROR) << endl;
 		return;
 	}
 
 	tindex = getIndex("[remove] select Tag index : ");
 	if (tindex < 0 || tindex > memos[index].tag.size()) {
-		cout << "[!] invalid index." << endl;
+		cout << COLOR("[!] invalid index.", ERROR) << endl;
 		return;
 	}
 
@@ -78,11 +78,12 @@ void MemoHandler::rmTag() {
 }
 
 void MemoHandler::showMemo(const int index) {
-	cout << " # " << "\x1b" << TextTheme() << "\x1b" << BgTheme() << " " << memos[index].name << " \x1b[0m" << endl;
+	cout << " # " << COLOR(" " + memos[index].name, MEMO) << endl;
 	//백그라운드가 뒤에, 텍스트 색깔이 앞에꺼.
 
 	for_each(memos[index].tag.begin(), memos[index].tag.end(), [] (string tag) {
-		cout << "  >T> " << "\x1b" << "[94m" << "\x1b" << "[35m" << tag << "\x1b[0m" << endl; });
+		cout << "  >T> " << COLOR(tag, TAG) << endl;
+	});
 }
 
 void MemoHandler::showAllMemo() {
@@ -91,26 +92,16 @@ void MemoHandler::showAllMemo() {
 	}
 }
 
+const string MemoHandler::getAvailableMemoIndex() {
+	ostringstream oss;
 
-const string MemoHandler::BgTheme() {
-	//TODO:
-	/*swtich(theme) {
-		case 1:
-		return "";
-		case 2:
-		return "";
-	}
-	*/
-	return "[103m";
-}
-const string MemoHandler::TextTheme() {
-	//TODO:
-	/*swtich(theme) {
-		case 1:
-		return "";
-		case 2:
-		return "";
-	}
-	*/
-	return "[92m";
+	oss << "available memo index : [ ";
+	int i = 1;
+	for_each(memos.begin(), memos.end(), [&i, &oss] (Memo & memo) {
+		oss << i << " ";
+		i++;
+	});
+	oss << "]" << endl;
+
+	return oss.str();
 }

@@ -4,18 +4,19 @@
     #include "header\Memo.h"
 	#include "header\MemoHandler.h"
 	#include "header\misc.h"
+	#include "header\ColorString.h"
 #elif __linux__
     #include "header/Memo.h"
 	#include "header/MemoHandler.h"
-	#include "header/misc.h"
+	#include "header/Misc.h"
+	#include "header/ColorString.h"
 #endif
 
 #include <vector>
 #include <algorithm>
 #include <cstdio>
-using namespace std;
 
-#define REPSTR(N, T) string{}.append(N, T)
+using namespace std;
 
 vector<string> menu = {
 	REPSTR(30, '-'),
@@ -37,6 +38,7 @@ enum MENUTYPE {
 	RMTAG,
 	SHOW,
 };
+const int MENUSIZE = 5;
 
 int main(int argc, char const *argv[])
 {
@@ -44,25 +46,18 @@ int main(int argc, char const *argv[])
 	setup();
 
 	MemoHandler handler;
-/*
-	handler.newMemo();
-	handler.newMemoTag();
-	handler.newMemo();
-	
-	handler.newMemoTag();
-	handler.showMemo(0);
-	handler.showMemo(1);
-	
-	handler.rmMemo();
-	handler.rmTag();
-
-	handler.showAllMemo();*/
 
 	while (true) {
 		for (auto s : menu) cout << s << endl;
 		cout << "select : ";
 		int i;
 		cin >> i;
+		if (cin.fail() || i > MENUSIZE || i < 1) {
+			cin.clear();
+			cin.ignore(IGNORESIZE, '\n');
+			cout << COLOR("[!] invaild menu number.", ERROR) << endl;
+			continue;
+		}
 
 		cin.ignore(256, '\n');
 		switch (i) {
@@ -79,12 +74,12 @@ int main(int argc, char const *argv[])
 			handler.rmTag();
 			break;
 		case SHOW:
-			for (int i = 0; i < 10; i++) cout << endl;
+			for (int i = 0; i < 30; i++) cout << endl;
 			handler.showAllMemo();
 			cout << endl;
 			cout << "press any key to continue. ";
-			char c = getchar();
-			for (int i = 0; i < 10; i++) cout << endl;
+			getchar();
+			for (int i = 0; i < 30; i++) cout << endl;
 			break;
 		}
 	}

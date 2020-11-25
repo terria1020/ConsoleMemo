@@ -17,11 +17,10 @@ public:
 
 	void showMemo(const int index);
 	void showAllMemo();
-
-	const string BgTheme();
-	const string TextTheme();
 	
 private:
 	vector<Memo> memos;
 	int theme;
+
+	const string getAvailableMemoIndex();
 };
