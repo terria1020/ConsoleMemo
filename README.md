@@ -8,6 +8,8 @@
 간단히 콘솔 상에서 비슷하게 메모를 작성하고, 출력하여 사용할 수 있게 하는 프로그램을 작성하게 되었다.
 
 ## 프로그램 사용 예시
+![image](https://user-images.githubusercontent.com/38485612/100242313-01571f80-2f78-11eb-87e7-52bae3ff1fdb.png)
+
 ![image](https://user-images.githubusercontent.com/38485612/100242043-b3421c00-2f77-11eb-9a90-646956362d49.png)
 
 ## 참고한 글
