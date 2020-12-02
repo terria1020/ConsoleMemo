@@ -3,6 +3,7 @@
 #include "Interfaces.h"
 #include <vector>
 #include <memory>
+#include <map>
 
 using namespace std;
 
@@ -14,17 +15,12 @@ public:
     string str() override;
     type_t Type() override;
 
-    Json & addKey(const string key);
-    Json & addValue(const string value);
-    Json & addJson(Json & json);
-
-    JsonData & operator[] (const int index) const;
+    Json & add(const string key, JsonData && jsondata);
 
     friend class JsonManager;
     friend class JsonConsoleLogger;
     friend class JsonMaker;
     friend class JsonParser;
 private:
-    string key;
-    vector<shared_ptr<JsonData>> data;
+    map<string, JsonData_PTR> elements;
 };

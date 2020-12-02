@@ -2,6 +2,8 @@
 #include "header/JsonValue.h"
 #include <algorithm>
 #include <iostream>
+#include <sstream>
+#include <utility>
 using namespace std;
 
 
@@ -11,27 +13,25 @@ Json::~Json() {
 }
 
 string Json::str() {
-    return "\"" + key + "\": ";
+    ostringstream oss;
+    oss << "{" << endl;
+    /*
+    for_each(elements.begin(), elements.end(), [&] (auto & e) {
+        oss << "\"" + e.first + "\": ";
+        if (e.second->Type() == TYPE::VALUE) {
+            oss << (static_pointer_cast<JsonValue>(e.second))->str() << endl;
+        }
+        else oss << e.second->str() << endl;
+    });
+    */
+    oss << "}" << endl;
+    return oss.str();
 }
 type_t Json::Type() {
     static type_t type = TYPE::JSONOBJ;
     return type;
 }
-
-Json & Json::addKey(const string key) {
-    this->key = key;
-    return *this;
-}
-Json & Json::addValue(const string value) {
-    data.push_back(make_shared<JsonValue>(JsonValue{value}));
-    return *this;
-}
-Json & Json::addJson(Json & json) {
-    data.push_back(make_shared<Json>(json));
-    return *this;
-}
-
-JsonData & Json::operator[] (const int index) const {
-    //if (index < 0 || index >= data.size()) throw("invalid index.")
-    return *data[index];
+Json & Json::add(const string key, JsonData && jsondata) {
+    elements.insert(make_pair(key, make_shared<JsonData>(jsondata)));
+    return * this;
 }
