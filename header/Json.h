@@ -21,6 +21,6 @@ public:
     friend class JsonConsoleLogger;
     friend class JsonMaker;
     friend class JsonParser;
-private:
+public:
     map<string, JsonData_PTR> elements;
 };

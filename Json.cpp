@@ -15,15 +15,17 @@ Json::~Json() {
 string Json::str() {
     ostringstream oss;
     oss << "{" << endl;
-    /*
+    
     for_each(elements.begin(), elements.end(), [&] (auto & e) {
         oss << "\"" + e.first + "\": ";
         if (e.second->Type() == TYPE::VALUE) {
+            //auto sub = static_pointer_cast<JsonValue> (e.second);
             oss << (static_pointer_cast<JsonValue>(e.second))->str() << endl;
+            //oss << sub->str() << endl;
         }
         else oss << e.second->str() << endl;
     });
-    */
+    
     oss << "}" << endl;
     return oss.str();
 }
@@ -32,6 +34,7 @@ type_t Json::Type() {
     return type;
 }
 Json & Json::add(const string key, JsonData && jsondata) {
+    //if (jsondata.Type() == TYPE::VALUE) elements.insert(make_pair(key, make_shared<JsonData>(dynamic_cast<JsonValue>(jsondata))));
     elements.insert(make_pair(key, make_shared<JsonData>(jsondata)));
     return * this;
 }
