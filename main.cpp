@@ -9,15 +9,15 @@
 using namespace std;
 
 int main() {
-    Json root;
+    auto root = Json::Factory::newJson();
 
-    root.add("tag", JsonValue{"hello world!"});
-    root.add("tag2", JsonValue{"hello world!2"});
+
+    root->add("tag", JsonValue::Factory::newValue("hello world!"));
     
-    Json sub;
-    sub.elements.insert(make_pair("subtag", make_shared<JsonValue>(JsonValue{"myname is terria"})));
-
-    root.elements.insert(make_pair("tag3", make_shared<Json>(sub)));
-    cout << root.str();
+    auto sub = Json::Factory::newJson();
+    sub->add("subtag", JsonValue::Factory::newValue("hello world! sub"));
+    sub->add("subtag2", JsonValue::Factory::newValue("hello world! sub2"));
+    root->add("subcontents:", sub);
+    cout << root->str() << endl;
     return 0;
 }
