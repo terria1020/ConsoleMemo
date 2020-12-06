@@ -21,6 +21,7 @@ private:
 
     string value;
 public:
-    typedef JsonValueFactory Factory;
+    //typedef JsonValueFactory Factory;
+    friend class Factory;
 };
 

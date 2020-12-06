@@ -1,6 +1,7 @@
 #pragma once
 #include "Interfaces.h"
 #include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -11,6 +12,10 @@ public:
 
     string str() override;
     type_t Type() override;
+    JsonData & add(shared_ptr<JsonData> data);
+    friend class Factory;
+protected:
+    vector<JsonData> child;
 };
 
 typedef shared_ptr<JsonData> JsonData_PTR;

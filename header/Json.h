@@ -33,6 +33,7 @@ private:
     vector<pair<string, JsonData_PTR>> elements;
 
 public:
-    typedef JsonFactory Factory;
+    //typedef JsonFactory Factory;
+    friend class Factory;
 };
 
