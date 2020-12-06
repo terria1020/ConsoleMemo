@@ -37,3 +37,7 @@ main.o : main.cpp
 
 clean :
 	rm *.o main
+
+install:
+	rm *.o
+	mv $(TARGET) bin/main
