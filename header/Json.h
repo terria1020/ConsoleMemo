@@ -3,7 +3,7 @@
 #include "Interfaces.h"
 #include <vector>
 #include <memory>
-#include <map>
+#include <utility>
 
 using namespace std;
 
@@ -30,7 +30,7 @@ private:
             return make_shared<Json> (Json{});
         }  
     };
-    map<string, JsonData_PTR> elements;
+    vector<pair<string, JsonData_PTR>> elements;
 
 public:
     typedef JsonFactory Factory;

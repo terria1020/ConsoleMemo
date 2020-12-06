@@ -35,6 +35,6 @@ type_t Json::Type() {
 }
 Json & Json::add(const string key, shared_ptr<JsonData> data) {
     //if (jsondata.Type() == TYPE::VALUE) elements.insert(make_pair(key, make_shared<JsonData>(dynamic_cast<JsonValue>(jsondata))));
-    elements.insert(make_pair(key, data));
+    elements.push_back(make_pair(key, data));
     return * this;
 }
