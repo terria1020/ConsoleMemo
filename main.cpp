@@ -18,6 +18,11 @@ int main() {
     auto sub = Factory::newJson();
     sub->add("subtag", Factory::newValue("hello world! sub"));
     sub->add("subtag2", Factory::newValue("hello world! sub2"));
+    auto datas = Factory::newJsonData();
+    datas->add(Factory::newValue("오늘 할 일"));
+    datas->add(Factory::newValue("내일 할 일"));
+    datas->add(Factory::newValue("모레 할 일"));
+    sub->add("sub tags : ", datas);
     root->add("subcontents:", sub);
     cout << root->str() << endl;
     return 0;

@@ -23,6 +23,7 @@ string Json::str() {
 
         //pair->second = value
         if (e.second->Type() == TYPE::VALUE) {
+            //TODO: TypeFilterCast 클래스를 만들어 공용으로 사용하게 할 것.
             //auto sub = static_pointer_cast<JsonValue> (e.second);
             oss << (static_pointer_cast<JsonValue>(e.second))->str() << endl;
             //oss << sub->str() << endl;

@@ -15,7 +15,7 @@ public:
     JsonData & add(shared_ptr<JsonData> data);
     friend class Factory;
 protected:
-    vector<JsonData> child;
+    vector<shared_ptr<JsonData>> child;
 };
 
 typedef shared_ptr<JsonData> JsonData_PTR;
