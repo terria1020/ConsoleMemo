@@ -20,6 +20,7 @@ JsonConsoleLogger.o : JsonConsoleLogger.cpp
 
 JsonData.o : JsonData.cpp
 	g++ -c -o JsonData.o JsonData.cpp $(CFLAGS)
+	
 JsonMaker.o : JsonMaker.cpp
 	g++ -c -o JsonMaker.o JsonMaker.cpp $(CFLAGS)
 
