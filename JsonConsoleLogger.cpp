@@ -5,7 +5,6 @@
 #include <iostream>
 #include <sstream>
 
-
 JsonConsoleLogger::JsonConsoleLogger(Json & json)
     : JsonManager(json)
 {

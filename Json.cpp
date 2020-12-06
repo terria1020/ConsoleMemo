@@ -17,7 +17,11 @@ string Json::str() {
     oss << "{" << endl;
     
     for_each(elements.begin(), elements.end(), [&] (auto & e) {
+        
+        //pair->first = key
         oss << "\"" + e.first + "\": ";
+
+        //pair->second = value
         if (e.second->Type() == TYPE::VALUE) {
             //auto sub = static_pointer_cast<JsonValue> (e.second);
             oss << (static_pointer_cast<JsonValue>(e.second))->str() << endl;
