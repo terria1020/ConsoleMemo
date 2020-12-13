@@ -1,22 +1,28 @@
 
+//user header
 #ifdef _WIN32
-	#include "header\headers.h"
+    #include "header\Memo.h"
+	#include "header\MemoHandler.h"
+	#include "header\Misc.h"
+	#include "header\ColorString.h"
 #elif __linux__
-    #include "header/headers.h"
+    #include "header/Memo.h"
+	#include "header/MemoHandler.h"
+	#include "header/Misc.h"
+	#include "header/ColorString.h"
 #endif
 
-vector<string> menu = {
-	REPSTR(30, '-'),
-	"< Console Memo >",
-	"this program use to record memo.",
-	REPSTR(30, '-'),
-	"1 : Add Memo",
-	"2 : Add memo-tag",
-	"3 : remove Memo",
-	"4 : remove memo-tag",
-	"5 : show All Memos",
-	REPSTR(30, '-')
-};
+//std base header
+#include <vector>
+#include <algorithm>
+#include <cstdio>
+#include <iostream>
+
+//using
+using namespace std;
+
+extern vector<string> menu;
+extern vector<string> themeMenu;
 
 enum MENUTYPE {
 	ADDMEMO = 1,
@@ -24,8 +30,8 @@ enum MENUTYPE {
 	RMMEMO,
 	RMTAG,
 	SHOW,
+	THEMESET
 };
-const int MENUSIZE = 5;
 
 int main(int argc, char const *argv[])
 {
@@ -38,7 +44,7 @@ int main(int argc, char const *argv[])
 		cout << "select : ";
 		int i;
 		cin >> i;
-		if (cin.fail() || i > MENUSIZE || i < 1) {
+		if (cin.fail() || i > TEXTSIZE_MENU || i < 1) {
 			cin.clear();
 			cin.ignore(IGNORESIZE, '\n');
 			cout << COLOR("[!] invaild menu number.", ERROR) << endl;
@@ -60,12 +66,16 @@ int main(int argc, char const *argv[])
 			handler.rmTag();
 			break;
 		case SHOW:
+			//줄넘김
 			for (int i = 0; i < 30; i++) cout << endl;
 			handler.showAllMemo();
 			cout << endl;
 			cout << "press any key to continue. ";
+			//입력 받을 때까지 대기
 			getchar();
 			for (int i = 0; i < 30; i++) cout << endl;
+			break;
+		case THEMESET:
 			break;
 		}
 	}

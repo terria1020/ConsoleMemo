@@ -1,6 +1,6 @@
 CC = g++
 OPT = -std=c++14 -Wall
-OBJS = ColorString.o Memo.o MemoHandler.o Misc.o main.o
+OBJS = ColorString.o Memo.o MemoHandler.o Misc.o texts.o main.o
 TARGET = ConsoleMemo
 
 
@@ -25,6 +25,9 @@ MemoHandler.o : MemoHandler.cpp
 
 Misc.o : Misc.cpp
 	$(CC) -c -o Misc.o Misc.cpp $(OPT)
+
+texts.o : texts.cpp
+	$(CC) -c -o texts.o texts.cpp $(OPT)
 
 clean : 
 	rm *.o bin/$(TARGET)

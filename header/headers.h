@@ -4,7 +4,7 @@
 #ifdef _WIN32
     #include "Memo.h"
 	#include "MemoHandler.h"
-	#include "misc.h"
+	#include "Misc.h"
 	#include "ColorString.h"
 #elif __linux__
     #include "Memo.h"

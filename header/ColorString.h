@@ -17,9 +17,10 @@ public:
 private:
     static string flag;
     static string e_flag;
+    static string ERRORCOLOR;
+public:
     static string MEMOCOLOR;
     static string MEMOBG;
     static string TAGCOLOR;
     static string TAGBG;
-    static string ERRORCOLOR;
 };
