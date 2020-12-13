@@ -1,22 +1,9 @@
-#include <iostream>
 
 #ifdef _WIN32
-    #include "header\Memo.h"
-	#include "header\MemoHandler.h"
-	#include "header\misc.h"
-	#include "header\ColorString.h"
+	#include "header\headers.h"
 #elif __linux__
-    #include "header/Memo.h"
-	#include "header/MemoHandler.h"
-	#include "header/Misc.h"
-	#include "header/ColorString.h"
+    #include "header/headers.h"
 #endif
-
-#include <vector>
-#include <algorithm>
-#include <cstdio>
-
-using namespace std;
 
 vector<string> menu = {
 	REPSTR(30, '-'),
@@ -42,7 +29,6 @@ const int MENUSIZE = 5;
 
 int main(int argc, char const *argv[])
 {
-	
 	setup();
 
 	MemoHandler handler;
