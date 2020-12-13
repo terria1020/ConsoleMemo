@@ -1,17 +1,16 @@
 CC = g++
 OPT = -std=c++14 -Wall
 OBJS = ColorString.o Memo.o MemoHandler.o Misc.o main.o
-TARGET = main
+TARGET = ConsoleMemo
 
-main : $(OBJS)
-	$(CC) -o $(TARGET) $(OBJS) $(OPT)
+ConsoleMemo : $(OBJS)
+	$(CC) -o bin/$(TARGET) $(OBJS) $(OPT)
 
 main.o : main.cpp
 	$(CC) -c -o main.o main.cpp $(OPT)
 
 ColorString.o : ColorString.cpp
 	$(CC) -c -o ColorString.o ColorString.cpp $(OPT)
-
 
 Memo.o : Memo.cpp
 	$(CC) -c -o Memo.o Memo.cpp $(OPT)
@@ -23,8 +22,8 @@ Misc.o : Misc.cpp
 	$(CC) -c -o Misc.o Misc.cpp $(OPT)
 
 clean : 
-	rm *.o $(TARGET)
+	rm *.o bin/$(TARGET)
 
 install : 
 	rm *.o
-	mv $(TARGET) bin/
+	mv bin/$(TARGET) /usr/bin
