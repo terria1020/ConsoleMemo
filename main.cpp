@@ -5,8 +5,8 @@
 	#include "header\MemoHandler.h"
 	#include "header\Misc.h"
 	#include "header\ColorString.h"
-#elif __linux__
-    #include "header/Memo.h"
+#else
+	#include "header/Memo.h"
 	#include "header/MemoHandler.h"
 	#include "header/Misc.h"
 	#include "header/ColorString.h"

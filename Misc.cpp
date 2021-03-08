@@ -1,8 +1,10 @@
 #ifdef _WIN32
     #include "header\Misc.h"
-#elif __linux__
+#else
     #include "header/Misc.h"
 #endif
+
+
 
 #include <cstdlib>
 #include <iostream>
@@ -13,8 +15,9 @@ using std::cin;
 #ifdef _WIN32
     #define CLEARCON() system("cls")
 #elif __linux__
-    #define CLEARCON() system("clear")
+    
 #endif
+#define CLEARCON() system("clear")
 
 void setup () {
     #ifdef _WIN32

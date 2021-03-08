@@ -2,10 +2,11 @@
     #include "header\MemoHandler.h"
 	#include "header\misc.h"
 	#include "header\ColorString.h"
-#elif __linux__
+#else
     #include "header/MemoHandler.h"
 	#include "header/Misc.h"
 	#include "header/ColorString.h"
+
 #endif
 
 #include <iostream>

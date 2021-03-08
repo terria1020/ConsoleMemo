@@ -1,8 +1,9 @@
 #ifdef _WIN32
     #include "header\ColorString.h"
-#elif __linux__
+#else
     #include "header/ColorString.h"
 #endif
+
 
 string ColorString::getColor(const string text, COLORTYPE type) {
     string color;

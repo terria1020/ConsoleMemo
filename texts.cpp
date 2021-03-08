@@ -1,4 +1,9 @@
+#ifdef _WIN32
+#include "header\Misc.h"
+
+#else
 #include "header/Misc.h"
+#endif
 
 #include <vector>
 #include <string>
