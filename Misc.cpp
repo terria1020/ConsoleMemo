@@ -4,27 +4,18 @@
     #include "header/Misc.h"
 #endif
 
-
-
 #include <cstdlib>
 #include <iostream>
 #include <assert.h>
 using std::cout;
 using std::cin;
 
-#ifdef _WIN32
-    #define CLEARCON() system("cls")
-#elif __linux__
-    
-#endif
-#define CLEARCON() system("clear")
-
 void setup () {
-    #ifdef _WIN32
+    if (isNeedSetup) {
         system("@echo off");
         //system("chcp 65001");//using korean in console // 원하는 대로 한글이 안 나옴. 일단 나중에 고쳐야 할 듯.
         system("chcp 949");
-    #endif
+    }
     CLEARCON();
     return;
 }

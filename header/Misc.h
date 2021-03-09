@@ -2,6 +2,15 @@
 #include <iostream>
 using namespace std;
 
+const bool isNeedSetup = false;
+
+#ifdef _WIN32
+    #define CLEARCON() system("cls")
+    const bool isNeedSetup = true;
+#else
+    #define CLEARCON() system("clear")
+#endif
+
 #define REPSTR(N, T) string{}.append(N, T)
 
 const int IGNORESIZE = sizeof(char) + 1;
