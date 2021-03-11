@@ -33,4 +33,4 @@ clean :
 	rm *.o bin/$(TARGET)
 
 install : 
-	mv bin/$(TARGET) /usr/bin
+	mv bin/$(TARGET) /usr/bin/
