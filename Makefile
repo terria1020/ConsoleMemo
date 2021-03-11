@@ -4,7 +4,9 @@ OBJS = main.o Factory.o Json.o Misc.o JsonConsoleLogger.o JsonData.o JsonMaker.o
 TARGET = main
 
 $(TARGET) : $(OBJS)
-	$(CC) -o $(TARGET) $(OBJS) $(CFLAGS)
+	@ if [ ! -d "bin" ]; then mkdir bin; fi;
+	$(CC) -o bin/$(TARGET) $(OBJS) $(OPT)
+	rm *.o
 
 Misc.o : Misc.cpp
 	g++ -c -o Misc.o Misc.cpp $(CFLAGS)
@@ -37,8 +39,7 @@ main.o : main.cpp
 	g++ -c -o main.o main.cpp $(CFLAGS)
 
 clean :
-	rm *.o main
+	rm *.o bin/$(TARGET)
 
 install:
-	rm *.o
-	mv $(TARGET) bin/main
+	mv $(TARGET) usr/bin/
